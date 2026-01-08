@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #1e3a8a;
+  color: white;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.search {
+  width: 40%;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+}
+
+.header-actions button {
+  margin-left: 10px;
+}

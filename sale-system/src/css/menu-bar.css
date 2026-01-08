@@ -1,0 +1,78 @@
+/* ===============================
+   MENU BAR – BOOK STORE
+================================ */
+
+.menu-bar {
+  width: 100%;
+  display: flex;
+  justify-content: center;       /* căn giữa menu */
+  align-items: center;
+  gap: 32px;
+  padding: 16px 0;
+  background-color: #f1f5f9;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* ===============================
+   MENU ITEM
+================================ */
+
+.menu-item {
+  position: relative;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  color: #0f172a;
+  padding: 6px 2px;
+  transition: color 0.25s ease;
+}
+
+/* hover cho menu thường */
+.menu-item:hover {
+  color: #2563eb;
+}
+
+/* underline mặc định */
+.menu-item::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0;
+  height: 2px;
+  background-color: #2563eb;
+  transition: width 0.25s ease;
+}
+
+/* hover underline */
+.menu-item:hover::after {
+  width: 100%;
+}
+
+/* ===============================
+   HOMEPAGE ACTIVE (HOVER CỨNG)
+================================ */
+
+.menu-item.home-active {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+.menu-item.home-active::after {
+  width: 100%;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .menu-bar {
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+
+  .menu-item {
+    font-size: 14px;
+  }
+}
