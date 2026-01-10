@@ -1,0 +1,20 @@
+.lux-menu {
+  background-color: #111;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 14px 0;
+}
+
+.menu-item {
+  font-size: 13px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  opacity: 0.85;
+}
+
+.menu-item:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
