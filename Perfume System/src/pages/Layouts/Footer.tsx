@@ -2,10 +2,74 @@ import "../../css/footer.css";
 
 const Footer = () => {
   return (
-    <footer className="footer">
-      <p>© 2026 BookStore. All rights reserved.</p>
-      <p>Email: support@bookstore.com | Hotline: 0123 456 789</p>
-    </footer>
+    <>
+      {/* EMAIL SUBSCRIBE */}
+      <div className="subscribe-section">
+        <div className="subscribe-left">
+          <span>Đăng ký để nhận ưu đãi qua email:</span>
+        </div>
+
+        <div className="subscribe-right">
+          <input type="email" placeholder="Nhập email của bạn" />
+          <button>ĐĂNG KÝ</button>
+        </div>
+      </div>
+
+      {/* FOOTER */}
+      <footer className="main-footer">
+        <div className="footer-container">
+          <div className="footer-col">
+            <h4>THÔNG TIN</h4>
+            <ul>
+              <li>Giới thiệu</li>
+              <li>Quy chế hoạt động</li>
+              <li>Hợp tác</li>
+              <li>Affiliate</li>
+              <li>Tuyển dụng</li>
+              <li>Liên hệ</li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h4>CÂU HỎI THƯỜNG GẶP</h4>
+            <ul>
+              <li>Tra cứu đơn hàng</li>
+              <li>Đổi trả sản phẩm</li>
+              <li>Không có hóa đơn?</li>
+              <li>Thiếu sản phẩm</li>
+              <li>Sản phẩm khác hình</li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h4>CHĂM SÓC KHÁCH HÀNG</h4>
+            <ul>
+              <li>Chính sách bán hàng</li>
+              <li>Chính sách bảo hành</li>
+              <li>Chính sách giao hàng</li>
+              <li>Thanh toán</li>
+              <li>Bảo mật</li>
+            </ul>
+          </div>
+
+          <div className="footer-col">
+            <h4>DỊCH VỤ KHÁCH HÀNG</h4>
+            <p><strong>Tên doanh nghiệp:</strong> Công ty ABC</p>
+            <p><strong>Hotline:</strong> 0900 000 000</p>
+            <p><strong>Email:</strong> support@email.com</p>
+            <p>
+              <strong>Giờ làm việc:</strong><br />
+              Thứ 2 - Thứ 6: 8:00 - 17:00<br />
+              Thứ 7: 8:00 - 11:30
+            </p>
+          </div>
+        </div>
+
+        <div className="footer-bottom">
+          © 2026 Your Brand. All rights reserved.
+        </div>
+      </footer>
+    </>
   );
 };
 

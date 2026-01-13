@@ -1,7 +1,18 @@
 import "../../css/menu-bar.css";
 
 const MenuBar = () => {
-  const menus = ["HOME", "PERFUME", "COLLECTION", "ABOUT", "CONTACT"];
+  const menus = [
+    "HOME",
+    "PERFUME",
+    "NEW ARRIVAL",
+    "BEST SELLER",
+    "COLLECTION",
+    "BRAND",
+    "GIFT",
+    "ABOUT",
+    "BLOG",
+    "CONTACT",
+  ];
 
   return (
     <nav className="lux-menu">

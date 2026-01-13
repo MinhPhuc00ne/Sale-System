@@ -1,20 +1,22 @@
 .lux-menu {
-  background-color: #111;
-  color: #fff;
   display: flex;
   justify-content: center;
-  gap: 40px;
-  padding: 14px 0;
+  gap: 46px;
+  padding: 14px 0 18px;
+  background: transparent;
 }
 
 .menu-item {
   font-size: 13px;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
   cursor: pointer;
-  opacity: 0.85;
+  color: #555;
+  opacity: 0.9;
+  transition: all 0.3s ease;
 }
 
 .menu-item:hover {
+  color: #000;
   opacity: 1;
   text-decoration: underline;
 }
