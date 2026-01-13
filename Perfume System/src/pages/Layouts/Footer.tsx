@@ -1,21 +1,41 @@
 import "../../css/footer.css";
+import { Facebook, Instagram, Twitter, Rss } from "lucide-react";
 
 const Footer = () => {
   return (
     <>
-      {/* EMAIL SUBSCRIBE */}
-      <div className="subscribe-section">
-        <div className="subscribe-left">
-          <span>Đăng ký để nhận ưu đãi qua email:</span>
-        </div>
+      {/* ================= SUBSCRIBE ================= */}
+      <div className="subscribe-wrapper">
+        <div className="subscribe-section">
+          <div className="subscribe-left">
+            Đăng ký để nhận ưu đãi qua email:
+          </div>
 
-        <div className="subscribe-right">
-          <input type="email" placeholder="Nhập email của bạn" />
-          <button>ĐĂNG KÝ</button>
+          <div className="subscribe-right">
+            <div className="subscribe-form">
+              <input type="email" placeholder="Nhập email của bạn" />
+              <button>ĐĂNG KÝ</button>
+            </div>
+
+            <div className="subscribe-social">
+              <div className="social-item">
+                <Facebook />
+              </div>
+              <div className="social-item">
+                <Instagram />
+              </div>
+              <div className="social-item">
+                <Twitter />
+              </div>
+              <div className="social-item">
+                <Rss />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* FOOTER */}
+      {/* ================= FOOTER ================= */}
       <footer className="main-footer">
         <div className="footer-container">
           <div className="footer-col">
@@ -57,11 +77,6 @@ const Footer = () => {
             <p><strong>Tên doanh nghiệp:</strong> Công ty ABC</p>
             <p><strong>Hotline:</strong> 0900 000 000</p>
             <p><strong>Email:</strong> support@email.com</p>
-            <p>
-              <strong>Giờ làm việc:</strong><br />
-              Thứ 2 - Thứ 6: 8:00 - 17:00<br />
-              Thứ 7: 8:00 - 11:30
-            </p>
           </div>
         </div>
 

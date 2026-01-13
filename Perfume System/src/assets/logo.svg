@@ -1,0 +1,30 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  width="300"
+  height="80"
+  viewBox="0 0 300 80"
+>
+  <style>
+    .logo-text {
+      font-family: "Playfair Display", "DejaVu Serif", serif;
+      font-size: 48px;
+      letter-spacing: 8px;
+      fill: #111;
+      font-weight: 500;
+    }
+
+    .logo-i {
+      font-weight: 400;
+    }
+  </style>
+
+  <text
+    x="50%"
+    y="50%"
+    text-anchor="middle"
+    dominant-baseline="middle"
+    class="logo-text"
+  >
+    DEL<tspan class="logo-i">I</tspan>K
+  </text>
+</svg>

@@ -1,48 +1,55 @@
-
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import "../../css/header.css";
-import logo from "../../assets/LOGO.jpg";
 import MenuBar from "./Menu-Bar";
 import { Search, ShoppingBag, Heart, User } from "lucide-react";
 
+const SCROLL_DELTA = 8; // ngưỡng chống rung (px)
+
 const Header = () => {
-  const [hideMenu, setHideMenu] = useState(false);
-  const [lastScrollY, setLastScrollY] = useState(0);
+  const [compact, setCompact] = useState(false);
+  const lastScrollY = useRef(0);
+  const ticking = useRef(false);
 
   useEffect(() => {
     const onScroll = () => {
-      const currentY = window.scrollY;
+      if (ticking.current) return;
 
-      if (currentY > lastScrollY && currentY > 120) {
-        // scroll xuống
-        setHideMenu(true);
-      } else {
-        // scroll lên
-        setHideMenu(false);
-      }
+      ticking.current = true;
 
-      setLastScrollY(currentY);
+      requestAnimationFrame(() => {
+        const currentY = window.scrollY;
+        const diff = currentY - lastScrollY.current;
+
+        // scroll xuống đủ mạnh → ẩn
+        if (diff > SCROLL_DELTA && !compact) {
+          setCompact(true);
+        }
+
+        // scroll lên đủ mạnh → hiện
+        if (diff < -SCROLL_DELTA && compact) {
+          setCompact(false);
+        }
+
+        lastScrollY.current = currentY;
+        ticking.current = false;
+      });
     };
 
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
-  }, [lastScrollY]);
+  }, [compact]);
 
   return (
-    <header className="lux-header">
-      {/* ===== TOP BAR ===== */}
+    <header className={`lux-header ${compact ? "compact" : ""}`}>
       <div className="lux-header-top">
-        {/* LEFT – SLOGAN */}
-        <div className="header-slogan">
-          Luxury Fragrance House
-        </div>
+        <div className="header-slogan">Luxury Fragrance House</div>
 
-        {/* CENTER – LOGO */}
         <div className="header-logo">
-          <img src={logo} alt="Logo" className="logo-img" />
+          <span className="logo-text">
+            DEL<span className="logo-i">I</span>K
+          </span>
         </div>
 
-        {/* RIGHT – ICONS */}
         <div className="header-icons">
           <Search className="lux-icon" />
           <ShoppingBag className="lux-icon" />
@@ -51,8 +58,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* ===== MENU ===== */}
-      <div className={`menu-wrapper ${hideMenu ? "hide" : ""}`}>
+      <div className="menu-wrapper">
         <MenuBar />
       </div>
     </header>
@@ -60,4 +66,3 @@ const Header = () => {
 };
 
 export default Header;
-
