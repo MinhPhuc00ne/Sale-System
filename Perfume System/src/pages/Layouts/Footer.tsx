@@ -81,7 +81,8 @@ const Footer = () => {
         </div>
 
         <div className="footer-bottom">
-          © 2026 Your Brand. All rights reserved.
+         Copyright © 2025 DELTIK Perfumes | Công ty TNHH Jos Nguyễn VN - P 2.04, Lầu 1, Satra Đồng Khởi Building, 10 Đồng Khởi, Phường Sài Gòn, TP. Hồ Chí Minh, Việt Nam |
+MST: 0348325528, đăng kí lần đầu ngày 13 tháng 06 năm 2017
         </div>
       </footer>
     </>

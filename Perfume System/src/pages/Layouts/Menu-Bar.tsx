@@ -2,13 +2,13 @@ import "../../css/menu-bar.css";
 
 const MenuBar = () => {
   const menus = [
-    "HOME",
-    "PERFUME",
-    "NEW ARRIVAL",
-    "BEST SELLER",
-    "COLLECTION",
-    "BRAND",
-    "GIFT",
+    "Homepage",
+    "About Us",
+    "Products",
+    "Services",
+    "Product details",
+    "Recruitment",
+    "Partner",
     "ABOUT",
     "BLOG",
     "CONTACT",

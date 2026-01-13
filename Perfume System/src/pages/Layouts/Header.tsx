@@ -1,9 +1,16 @@
 import { useEffect, useState, useRef } from "react";
 import "../../css/header.css";
 import MenuBar from "./Menu-Bar";
-import { Search, ShoppingBag, Heart, User } from "lucide-react";
 
-const SCROLL_DELTA = 8; // ngưỡng chống rung (px)
+import {
+  Search,
+  ShoppingBag,
+  Heart,
+  Truck,
+  Coins,
+} from "lucide-react";
+
+const SCROLL_DELTA = 8;
 
 const Header = () => {
   const [compact, setCompact] = useState(false);
@@ -13,22 +20,14 @@ const Header = () => {
   useEffect(() => {
     const onScroll = () => {
       if (ticking.current) return;
-
       ticking.current = true;
 
       requestAnimationFrame(() => {
         const currentY = window.scrollY;
         const diff = currentY - lastScrollY.current;
 
-        // scroll xuống đủ mạnh → ẩn
-        if (diff > SCROLL_DELTA && !compact) {
-          setCompact(true);
-        }
-
-        // scroll lên đủ mạnh → hiện
-        if (diff < -SCROLL_DELTA && compact) {
-          setCompact(false);
-        }
+        if (diff > SCROLL_DELTA && !compact) setCompact(true);
+        if (diff < -SCROLL_DELTA && compact) setCompact(false);
 
         lastScrollY.current = currentY;
         ticking.current = false;
@@ -41,23 +40,69 @@ const Header = () => {
 
   return (
     <header className={`lux-header ${compact ? "compact" : ""}`}>
+      {/* TOP BAR */}
       <div className="lux-header-top">
-        <div className="header-slogan">Luxury Fragrance House</div>
+        {/* LEFT */}
+        <div className="header-slogan">
+          Luxury Fragrance House
+        </div>
 
+        {/* CENTER */}
         <div className="header-logo">
           <span className="logo-text">
             DEL<span className="logo-i">I</span>K
           </span>
         </div>
 
-        <div className="header-icons">
-          <Search className="lux-icon" />
-          <ShoppingBag className="lux-icon" />
-          <Heart className="lux-icon" />
-          <User className="lux-icon" />
+        {/* RIGHT */}
+        <div className="header-right">
+          {/* TOP RIGHT */}
+          <div className="right-top">
+            <div
+              className="icon-item"
+              data-tooltip="Kiểm tra đơn hàng"
+            >
+              <Truck size={18} />
+            </div>
+
+            <div className="coin-item">
+              <Coins size={18} />
+              <span>0 VNĐ</span>
+            </div>
+
+            <div
+              className="icon-item"
+              data-tooltip="Sản phẩm yêu thích"
+            >
+              <Heart size={18} />
+            </div>
+          </div>
+
+          {/* BOTTOM RIGHT */}
+          <div className="right-bottom">
+            <div className="search-box">
+              <Search size={18} />
+              <input
+                type="text"
+                placeholder="Tìm kiếm sản phẩm..."
+              />
+            </div>
+
+            <div className="auth-text">
+              Đăng Nhập / Đăng Ký
+            </div>
+
+            <div
+              className="icon-item"
+              data-tooltip="Giỏ hàng"
+            >
+              <ShoppingBag size={20} />
+            </div>
+          </div>
         </div>
       </div>
 
+      {/* MENU */}
       <div className="menu-wrapper">
         <MenuBar />
       </div>
