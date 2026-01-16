@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import "../../css/header.css";
 import MenuBar from "./Menu-Bar";
 
@@ -16,6 +17,7 @@ const Header = () => {
   const [compact, setCompact] = useState(false);
   const lastScrollY = useRef(0);
   const ticking = useRef(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => {
@@ -40,7 +42,7 @@ const Header = () => {
 
   return (
     <header className={`lux-header ${compact ? "compact" : ""}`}>
-      {/* TOP BAR */}
+      {/* ================= TOP BAR ================= */}
       <div className="lux-header-top">
         {/* LEFT */}
         <div className="header-slogan">
@@ -48,7 +50,11 @@ const Header = () => {
         </div>
 
         {/* CENTER */}
-        <div className="header-logo">
+        <div
+          className="header-logo"
+          onClick={() => navigate("/")}
+          style={{ cursor: "pointer" }}
+        >
           <span className="logo-text">
             DEL<span className="logo-i">I</span>K
           </span>
@@ -88,8 +94,12 @@ const Header = () => {
               />
             </div>
 
-            <div className="auth-text">
-              Đăng Nhập / Đăng Ký tại đây
+            {/* AUTH */}
+            <div
+              className="auth-text"
+              onClick={() => navigate("/auth")}
+            >
+              Đăng Nhập / Đăng Ký
             </div>
 
             <div
@@ -102,7 +112,7 @@ const Header = () => {
         </div>
       </div>
 
-      {/* MENU */}
+      {/* ================= MENU ================= */}
       <div className="menu-wrapper">
         <MenuBar />
       </div>
