@@ -15,105 +15,98 @@ const getAIReply = (text: string): string => {
     msg.includes("hello") ||
     msg.includes("hi") ||
     msg.includes("chào") ||
-    msg.includes("xin chào")
+    msg.includes("xin chào") ||
+    msg.includes("alo")
   ) {
-    return "Chào bạn ✨ Tôi là trợ lý tư vấn nước hoa. Bạn đang tìm mùi hương cho dịp nào?";
+    return "Chào bạn ✨ Tôi là trợ lý tư vấn DELIX. Bạn đang tìm mùi hương hay boutique gần bạn?";
+  }
+
+  /* ===== LOCATION / STORE ===== */
+  if (
+    msg.includes("cửa hàng") ||
+    msg.includes("chi nhánh") ||
+    msg.includes("shop") ||
+    msg.includes("store")
+  ) {
+    return "DELIX hiện có boutique tại TP.HCM và Hà Nội. Bạn muốn tìm cửa hàng ở khu vực nào?";
+  }
+
+  if (msg.includes("gần tôi") || msg.includes("gần đây")) {
+    return "Bạn đang ở TP.HCM hay Hà Nội? Mình sẽ gợi ý boutique DELIX gần bạn nhất ✨";
+  }
+
+  if (
+    msg.includes("tp.hcm") ||
+    msg.includes("tphcm") ||
+    msg.includes("hcm") ||
+    msg.includes("sài gòn")
+  ) {
+    return "Tại TP.HCM, DELIX có boutique tại khu vực HUTECH – không gian hiện đại, riêng tư và đầy đủ các dòng nước hoa signature.";
+  }
+
+  if (msg.includes("hà nội") || msg.includes("hn")) {
+    return "Tại Hà Nội, DELIX có boutique tại Hoàn Kiếm, Ba Đình và Tây Hồ – mỗi nơi mang phong cách tinh tế và trải nghiệm cá nhân hóa.";
+  }
+
+  if (msg.includes("hoàn kiếm")) {
+    return "Boutique DELIX Hoàn Kiếm nằm tại trung tâm thành phố, phù hợp trải nghiệm các dòng nước hoa cao cấp và unisex.";
+  }
+
+  if (msg.includes("ba đình")) {
+    return "DELIX Ba Đình mang phong cách trầm – sang, rất phù hợp với các mùi hương gỗ và amber.";
+  }
+
+  if (msg.includes("tây hồ")) {
+    return "Boutique DELIX Tây Hồ có không gian thoáng, yên tĩnh – lý tưởng để trải nghiệm các mùi hương nhẹ và tinh tế.";
+  }
+
+  if (
+    msg.includes("giờ mở cửa") ||
+    msg.includes("mấy giờ mở")
+  ) {
+    return "Các boutique DELIX mở cửa từ 9:00 đến 21:00 hằng ngày. Bạn muốn ghé chi nhánh nào?";
+  }
+
+  if (
+    msg.includes("test mùi") ||
+    msg.includes("thử mùi") ||
+    msg.includes("trải nghiệm")
+  ) {
+    return "Tại boutique DELIX, bạn có thể test mùi trực tiếp và được tư vấn cá nhân hóa theo phong cách & hoàn cảnh sử dụng.";
   }
 
   /* ===== SCENT STYLE ===== */
   if (msg.includes("nhẹ")) {
-    return "Mùi nhẹ thường là hương citrus, trà xanh hoặc hoa trắng. Phù hợp dùng ban ngày và môi trường văn phòng.";
+    return "Mùi nhẹ thường là citrus, trà xanh hoặc hoa trắng – phù hợp ban ngày và môi trường công sở.";
   }
 
   if (msg.includes("đậm") || msg.includes("mạnh")) {
-    return "Mùi đậm thường có hương gỗ, da thuộc hoặc amber. Phù hợp dùng buổi tối hoặc đi tiệc.";
+    return "Mùi đậm thường có hương gỗ, amber hoặc da thuộc – phù hợp buổi tối hoặc đi tiệc.";
   }
 
   if (msg.includes("ngọt")) {
-    return "Mùi ngọt thường là vanilla, caramel hoặc hoa quả. Phù hợp đi tiệc, sinh nhật hoặc buổi tối.";
+    return "Mùi ngọt như vanilla hoặc fruity rất phù hợp cho tiệc tối hoặc hẹn hò.";
   }
 
   if (msg.includes("mát")) {
-    return "Mùi mát thường là bạc hà, cam chanh, biển. Rất hợp dùng mùa hè hoặc ban ngày.";
+    return "Mùi mát như cam chanh, bạc hà hoặc biển rất lý tưởng cho mùa hè.";
   }
 
   /* ===== OCCASION ===== */
-  if (msg.includes("đi tiệc")) {
-    return "Đi tiệc bạn nên chọn mùi hương nổi bật, lưu hương tốt như amber, vanilla hoặc hương gỗ ấm.";
-  }
-
-  if (msg.includes("sinh nhật")) {
-    return "Sinh nhật nên dùng mùi dễ chịu nhưng vẫn ấn tượng, như hoa trắng pha vanilla nhẹ.";
-  }
-
   if (msg.includes("đi làm") || msg.includes("công sở")) {
-    return "Đi làm nên chọn mùi nhẹ, thanh lịch để không gây khó chịu cho người xung quanh.";
-  }
-
-  if (msg.includes("đi học")) {
-    return "Đi học phù hợp với mùi mát, nhẹ như citrus hoặc trà xanh.";
+    return "Đi làm nên chọn mùi nhẹ, thanh lịch để tạo ấn tượng tinh tế.";
   }
 
   if (msg.includes("hẹn hò")) {
     return "Hẹn hò nên chọn mùi ấm, quyến rũ nhẹ như xạ hương hoặc vanilla.";
   }
 
-  /* ===== GENDER ===== */
-  if (msg.includes("nam")) {
-    return "Nam giới thường phù hợp với mùi gỗ, citrus, hoặc hương biển. Bạn thích nhẹ hay đậm?";
-  }
-
-  if (msg.includes("nữ")) {
-    return "Nữ giới thường hợp với mùi hoa, ngọt nhẹ hoặc fruity. Bạn dùng ban ngày hay buổi tối?";
-  }
-
-  if (msg.includes("unisex")) {
-    return "Unisex thường là mùi trà, gỗ nhẹ hoặc citrus. Dễ dùng cho nhiều hoàn cảnh.";
-  }
-
-  /* ===== TIME ===== */
-  if (msg.includes("ban ngày")) {
-    return "Ban ngày nên dùng mùi nhẹ, mát để tạo cảm giác dễ chịu.";
-  }
-
-  if (msg.includes("buổi tối")) {
-    return "Buổi tối phù hợp với mùi ấm, sâu và lưu hương tốt.";
-  }
-
-  /* ===== WEATHER ===== */
-  if (msg.includes("mùa hè")) {
-    return "Mùa hè rất hợp với mùi mát, citrus hoặc biển.";
-  }
-
-  if (msg.includes("mùa đông")) {
-    return "Mùa đông nên dùng mùi ấm như gỗ, vanilla hoặc amber.";
-  }
-
-  /* ===== PERFORMANCE ===== */
-  if (msg.includes("lưu hương")) {
-    return "Các mùi gỗ, amber và vanilla thường có độ lưu hương rất tốt.";
-  }
-
-  if (msg.includes("tỏa hương")) {
-    return "Nếu bạn muốn tỏa hương tốt, hãy chọn nước hoa có nồng độ EDP hoặc Parfum.";
-  }
-
-  /* ===== PRICE ===== */
-  if (msg.includes("rẻ") || msg.includes("giá thấp")) {
-    return "Bạn có thể chọn các mùi nhẹ, dễ dùng với mức giá vừa phải cho sử dụng hàng ngày.";
-  }
-
-  if (msg.includes("cao cấp") || msg.includes("sang")) {
-    return "Nước hoa cao cấp thường có mùi phức tạp và độ lưu hương tốt, rất phù hợp làm quà tặng.";
-  }
-
-  /* ===== GIFT ===== */
-  if (msg.includes("quà")) {
-    return "Làm quà tặng bạn nên chọn mùi unisex, dễ dùng và thanh lịch.";
+  if (msg.includes("đi tiệc")) {
+    return "Đi tiệc nên chọn mùi nổi bật và lưu hương tốt như amber hoặc gỗ ấm.";
   }
 
   /* ===== DEFAULT ===== */
-  return "Bạn có thể cho mình biết thêm về dịp sử dụng, giới tính hoặc mùi hương bạn thích không?";
+  return "Bạn có thể cho mình biết thêm về mùi hương yêu thích, dịp sử dụng hoặc khu vực bạn muốn ghé boutique không?";
 };
 
 /* ================= COMPONENT ================= */
@@ -137,13 +130,10 @@ const AIChat = () => {
     setTimeout(() => {
       setMessages([
         ...newMessages,
-        {
-          role: "assistant",
-          content: getAIReply(input),
-        },
+        { role: "assistant", content: getAIReply(input) },
       ]);
       setLoading(false);
-    }, 700);
+    }, 600);
   };
 
   return (
@@ -157,21 +147,21 @@ const AIChat = () => {
         boxShadow: "0 8px 30px rgba(0,0,0,0.6)",
       }}
     >
-      <h3>💬 Tư vấn nước hoa</h3>
+      <h3 style={{ marginBottom: 8 }}>💬 Tư vấn nước hoa</h3>
 
       <div style={{ height: 260, overflowY: "auto", marginBottom: 12 }}>
         {messages.map((m, i) => (
           <div key={i} style={{ marginBottom: 8 }}>
-            <b>{m.role === "user" ? "Bạn" : "AI"}:</b> {m.content}
+            <b>{m.role === "user" ? "Bạn" : "DELIX"}:</b> {m.content}
           </div>
         ))}
-        {loading && <p style={{ opacity: 0.6 }}>AI đang suy nghĩ...</p>}
+        {loading && <p style={{ opacity: 0.6 }}>đang suy nghĩ…</p>}
       </div>
 
       <input
         value={input}
         onChange={(e) => setInput(e.target.value)}
-        placeholder="Nhập mùi bạn thích..."
+        placeholder="Hỏi về mùi hương hoặc boutique..."
         style={{
           width: "100%",
           padding: 10,

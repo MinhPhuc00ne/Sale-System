@@ -1,4 +1,4 @@
-export type Perfume = {
+export type Mockdata = {
   id: number;
   name: string;
   style: "sang_trong" | "tre_trung" | "quyen_ru" | "nhe_nhang";
@@ -6,7 +6,7 @@ export type Perfume = {
   occasion: "hang_ngay" | "di_lam" | "hen_ho";
 };
 
-export const perfumes: Perfume[] = [
+export const perfumes: Mockdata[] = [
   {
     id: 1,
     name: "Bleu de Chanel",
