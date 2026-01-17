@@ -10,18 +10,12 @@ const AuthPage = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // 👉 sau này gắn API login ở đây
-    // if (loginSuccess) {
-
-    navigate("/", { replace: true }); // ⬅️ quay về homepage
+    navigate("/", { replace: true }); 
   };
 
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
-
-    // 👉 sau này gắn API register
-    setMode("login"); // đăng ký xong quay về login
+    setMode("login"); 
   };
 
   return (
