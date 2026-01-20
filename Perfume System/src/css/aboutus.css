@@ -1,0 +1,128 @@
+/* ================= ABOUT DELTIK ================= */
+.about-deltik {
+  font-family: "Inter", sans-serif;
+  color: #222;
+}
+
+.hero {
+  min-height: 90vh;
+  padding: 120px 40px;
+  text-align: center;
+  background: linear-gradient(180deg, #f7f8fa, #f1f2f4);
+}
+
+.hero h1 {
+  font-size: 52px;
+  letter-spacing: 6px;
+  margin-bottom: 24px;
+}
+
+.hero p {
+  max-width: 720px;
+  margin: 0 auto 36px;
+  line-height: 1.8;
+  color: #555;
+}
+
+.cta {
+  padding: 16px 38px;
+  background: #000;
+  color: #fff;
+  border: none;
+  letter-spacing: 3px;
+  cursor: pointer;
+}
+
+.article {
+  max-width: 1100px;
+  margin: 100px auto;
+  padding: 0 40px;
+  display: flex;
+  gap: 48px;
+  align-items: center;
+}
+
+.article.reverse {
+  flex-direction: row-reverse;
+}
+
+.article img {
+  width: 420px;
+  border-radius: 20px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.article h2 {
+  font-size: 30px;
+  margin-bottom: 16px;
+}
+
+.article p, .article li {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #555;
+}
+
+.promise {
+  margin-top: 14px;
+}
+
+.seasons {
+  padding: 100px 40px;
+  background: #fafafa;
+  text-align: center;
+}
+
+.season-grid {
+  max-width: 900px;
+  margin: 48px auto 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 24px;
+}
+
+.season-grid div {
+  padding: 28px;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 14px 36px rgba(0,0,0,0.08);
+}
+
+.season-grid .highlight {
+  border: 2px solid #000;
+}
+
+.store-panel {
+  position: absolute;
+  left: 40px;
+  bottom: 40px;
+  background: #fff;
+  padding: 24px 28px;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.2);
+}
+
+.ai-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: #000;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+}
+
+@media (max-width: 768px) {
+  .article, .article.reverse {
+    flex-direction: column;
+  }
+
+  .hero h1 {
+    font-size: 38px;
+  }
+}

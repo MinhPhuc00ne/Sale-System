@@ -6,7 +6,7 @@ const MenuBar = () => {
     { label: "Homepage", path: "/" },
     { label: "About Us", path: "/about" },
     { label: "Products", path: "/products" },
-    { label: "Services", path: "/services" },
+    { label: "Brand", path: "/Brand" },
     { label: "Product details", path: "/product" },
     { label: "Recruitment", path: "/recruitment" },
     { label: "Partner", path: "/partner" },

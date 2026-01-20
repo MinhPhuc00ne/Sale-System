@@ -1,0 +1,289 @@
+/* ======================================================
+   RESET & GLOBAL
+====================================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.brand-page-light {
+  min-height: 100vh;
+  padding: 80px 40px 120px;
+  background: linear-gradient(180deg, #f7f8fa, #f1f2f4);
+  color: #222;
+  font-family: "Inter", sans-serif;
+}
+
+/* ======================================================
+   HEADER
+====================================================== */
+.brand-header-light {
+  text-align: center;
+  margin-bottom: 42px;
+}
+
+.brand-header-light h1 {
+  font-size: 56px;
+  letter-spacing: 6px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.brand-header-light p {
+  margin-top: 12px;
+  font-size: 15px;
+  color: #777;
+}
+
+/* ======================================================
+   SEARCH
+====================================================== */
+.brand-search-modern {
+  max-width: 520px;
+  margin: 0 auto 42px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 22px;
+  background: #ffffff;
+  border-radius: 999px;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+}
+
+.brand-search-modern svg {
+  color: #888;
+}
+
+.brand-search-modern input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 15px;
+}
+
+.brand-search-modern:focus-within {
+  box-shadow: 0 22px 54px rgba(0, 0, 0, 0.14);
+  transform: translateY(-1px);
+}
+
+/* ======================================================
+   ALPHABET BAR
+====================================================== */
+.alphabet-bar-light {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 48px;
+}
+
+.alphabet-letter-light {
+  min-width: 36px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  color: #888;
+  transition: all 0.25s ease;
+}
+
+.alphabet-letter-light:hover,
+.alphabet-letter-light.active {
+  background: #1e1e1e;
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* ======================================================
+   BRAND GRID
+====================================================== */
+.brand-list-light {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+}
+
+.brand-card-light {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 22px 20px;
+  text-align: center;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.35s ease;
+}
+
+.brand-card-light:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 26px 64px rgba(0, 0, 0, 0.16);
+}
+
+.brand-card-light svg {
+  color: #c7a14a;
+}
+
+/* ======================================================
+   FONT STYLES
+====================================================== */
+.brand-card-light.serif span {
+  font-family: "Playfair Display", serif;
+  font-size: 18px;
+}
+
+.brand-card-light.sans span {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.brand-card-light.script span {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 19px;
+}
+
+.brand-card-light.lux span {
+  font-family: "Cinzel", serif;
+  font-size: 17px;
+  letter-spacing: 1px;
+}
+
+.brand-card-light.modern span {
+  font-family: "Montserrat", sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+/* ======================================================
+   EMPTY
+====================================================== */
+.empty-text {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-top: 26px;
+  font-size: 14px;
+  color: #aaa;
+}
+
+/* ======================================================
+   DIVIDER
+====================================================== */
+.lux-divider {
+  margin: 90px auto;
+  max-width: 700px;
+  text-align: center;
+  color: #666;
+}
+
+.lux-divider svg {
+  color: #c7a14a;
+}
+
+.lux-divider p {
+  margin-top: 16px;
+  font-style: italic;
+  font-size: 15px;
+}
+
+/* ======================================================
+   ARTICLE
+====================================================== */
+.brand-article {
+  max-width: 1100px;
+  margin: 90px auto;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.brand-article.reverse {
+  flex-direction: row-reverse;
+}
+
+.brand-article img {
+  width: 420px;
+  max-width: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+  box-shadow: 0 20px 52px rgba(0, 0, 0, 0.14);
+}
+
+.article-content h2 {
+  font-family: "Playfair Display", serif;
+  font-size: 28px;
+  margin-bottom: 16px;
+}
+
+.article-content p {
+  font-size: 15px;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 14px;
+}
+
+/* ======================================================
+   AI CHAT
+====================================================== */
+.ai-toggle-btn.light {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: #1e1e1e;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+  transition: transform 0.3s ease;
+}
+
+.ai-toggle-btn.light:hover {
+  transform: scale(1.08);
+}
+
+.ai-chat-wrapper {
+  position: fixed;
+  bottom: 92px;
+  right: 24px;
+  z-index: 999;
+}
+
+/* ======================================================
+   RESPONSIVE
+====================================================== */
+@media (max-width: 768px) {
+  .brand-page-light {
+    padding: 60px 20px 100px;
+  }
+
+  .brand-header-light h1 {
+    font-size: 42px;
+    letter-spacing: 4px;
+  }
+
+  .brand-article,
+  .brand-article.reverse {
+    flex-direction: column;
+    gap: 28px;
+  }
+
+  .brand-article img {
+    width: 100%;
+  }
+}

@@ -46,7 +46,7 @@ const Header = () => {
       <div className="lux-header-top">
         {/* LEFT */}
         <div className="header-slogan">
-          Luxury Fragrance House
+          To Touch Is To Feel
         </div>
 
         {/* CENTER */}
