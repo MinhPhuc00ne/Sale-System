@@ -1,108 +1,236 @@
+import { useState } from "react";
 import "../css/contact.css";
-import C1 from "../assets/C1.jpg";
-import C2 from "../assets/C2.jpg";
-import C3 from "../assets/C3.jpg";
-import C4 from "../assets/C4.jpg";
+import AIChat from "../components/AIChat";
 
-const PEOPLE = [
+/* ================= DATA ================= */
+const MOODS: string[] = [
+  "Thanh sạch",
+  "Ấm áp",
+  "Gợi cảm",
+  "Trầm tĩnh",
+  "Tươi mới",
+  "Cá tính",
+];
+
+type FAQ = {
+  q: string;
+  a: string;
+};
+
+const FAQS: FAQ[] = [
   {
-    img: C1,
-    name: "Alexandre Duval",
-    role: "Founder & CEO",
-    quote: "A fragrance is memory made visible.",
+    q: "DELTIK có hỗ trợ tư vấn chọn mùi không?",
+    a: "Có. Bạn chỉ cần chia sẻ cảm xúc hoặc hoàn cảnh sử dụng, DELTIK sẽ gợi ý mùi phù hợp.",
   },
   {
-    img: C2,
-    name: "Élise Moreau",
-    role: "Master Perfumer",
-    quote: "Each note must breathe like skin.",
+    q: "Tôi chưa từng dùng nước hoa niche, có phù hợp không?",
+    a: "Hoàn toàn phù hợp. DELTIK hướng đến trải nghiệm cá nhân, dễ cảm và tinh tế.",
   },
   {
-    img: C3,
-    name: "Julien Laurent",
-    role: "Brand & Creative Director",
-    quote: "Luxury is silence, not noise.",
+    q: "Mùi hương giữ được bao lâu?",
+    a: "Trung bình 6–10 giờ trên da, lâu hơn trên vải, tùy cơ địa.",
   },
   {
-    img: C4,
-    name: "Camille Rousseau",
-    role: "Head of Client Experience",
-    quote: "Service is an invisible perfume.",
+    q: "Có thể chọn mùi làm quà không?",
+    a: "Có. DELTIK hỗ trợ tư vấn mùi theo người nhận và hoàn cảnh tặng.",
+  },
+  {
+    q: "DELTIK có cửa hàng không?",
+    a: "Hiện tại DELTIK hoạt động online và pop-up theo từng thời điểm.",
+  },
+  {
+    q: "Có dịch vụ khắc tên không?",
+    a: "Có. Khắc tên giúp chai nước hoa trở thành dấu ấn cá nhân.",
+  },
+  {
+    q: "Bao lâu tôi nhận được phản hồi?",
+    a: "Trong vòng 24 giờ làm việc.",
   },
 ];
 
+const POLICIES: string[] = [
+  "Hỗ trợ đổi sản phẩm trong vòng 7 ngày kể từ khi nhận hàng.",
+  "Sản phẩm phải còn nguyên vẹn và chưa qua sử dụng.",
+  "Không áp dụng đổi trả với sản phẩm đã khắc tên.",
+  "Chi phí vận chuyển đổi trả do khách hàng chi trả (trừ lỗi từ DELTIK).",
+  "Sản phẩm lỗi hoặc giao sai sẽ được đổi mới 100%.",
+  "Mỗi đơn hàng chỉ được đổi một lần.",
+  "Không hoàn tiền mặt, chỉ hỗ trợ đổi sản phẩm tương đương.",
+  "Yêu cầu đổi trả cần được xác nhận qua email hoặc hotline.",
+];
+
+type ActiveBox = "" | "faq" | "policy";
+
 const Contact = () => {
+  const [activeBox, setActiveBox] = useState<ActiveBox>("");
+  const [sent, setSent] = useState<boolean>(false);
+  const [openAI, setOpenAI] = useState<boolean>(false);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setSent(true);
+  };
+
   return (
     <div className="contact-page">
+      {/* ================= OVERLAY ================= */}
+      {activeBox && (
+        <div className="contact-overlay">
+          <div className="overlay-inner">
+            <button
+              className="overlay-back"
+              onClick={() => setActiveBox("")}
+            >
+              ← Quay lại
+            </button>
 
-      {/* HERO ESSAY */}
-      <section className="contact-essay">
-        <span className="essay-label">CONTACT</span>
+            {activeBox === "faq" && (
+              <>
+                <h2>Câu hỏi thường gặp</h2>
+                {FAQS.map((item, i) => (
+                  <div key={i} className="qa-item">
+                    <h4>{item.q}</h4>
+                    <p>{item.a}</p>
+                  </div>
+                ))}
+              </>
+            )}
+
+            {activeBox === "policy" && (
+              <>
+                <h2>Chính sách giao hàng & đổi trả</h2>
+                <ul>
+                  {POLICIES.map((p, i) => (
+                    <li key={i}>{p}</li>
+                  ))}
+                </ul>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      {/* ================= INTRO ================= */}
+      <section className="contact-intro">
+        <span className="contact-label">CONTACT</span>
         <h1>
-          Fragrance is an intimate language.
+          Bạn cần tư vấn chọn mùi, hỗ trợ đơn hàng,
+          <br />
+          hay muốn chuẩn bị một món quà đặc biệt?
         </h1>
         <p>
-          It speaks before words, and remains long after silence.
+          DELTIK luôn sẵn sàng lắng nghe —
           <br />
-          Every message you send is read by the people behind the scent.
+          <strong>“mùi của chính mình”</strong>.
         </p>
       </section>
 
-      {/* PEOPLE */}
-      <section className="contact-people">
-        <h2>OUR PEOPLE</h2>
-        <div className="people-grid">
-          {PEOPLE.map((p, i) => (
-            <div className="people-card" key={i}>
-              <img src={p.img} alt={p.name} />
-              <div className="people-overlay">
-                <h3>{p.name}</h3>
-                <span>{p.role}</span>
-                <p>{p.quote}</p>
-              </div>
-            </div>
+      {/* ================= MOOD ================= */}
+      <section className="contact-mood">
+        <p className="mood-title">
+          Hôm nay bạn đang tìm mùi theo cảm xúc nào?
+        </p>
+        <div className="mood-list">
+          {MOODS.map((mood, i) => (
+            <span key={i} className="mood-chip">
+              {mood}
+            </span>
           ))}
         </div>
       </section>
 
-      {/* FORM + MAP */}
+      {/* ================= MAIN ================= */}
       <section className="contact-main">
-        <div className="contact-form">
-          <h3>Write to the House</h3>
-          <input type="text" placeholder="Your name" />
-          <input type="email" placeholder="Email address" />
-          <select>
-            <option>Fragrance Consultation</option>
-            <option>Private Appointment</option>
-            <option>Partnership</option>
+        <div className="contact-info">
+          <h3>Thông tin liên hệ</h3>
+
+          <div className="info-block">
+            <span>Email</span>
+            <p>support@deltik.com</p>
+          </div>
+
+          <div className="info-block">
+            <span>Hotline</span>
+            <p>+84 9xx xxx xxx</p>
+          </div>
+
+          <div className="info-block">
+            <span>Social</span>
+            <p>Instagram · TikTok · Facebook</p>
+          </div>
+
+          <div className="info-block">
+            <span>Thời gian phản hồi</span>
+            <p>Trong vòng 24 giờ làm việc</p>
+          </div>
+        </div>
+
+        <form className="contact-form" onSubmit={handleSubmit}>
+          <h3>Gửi lời nhắn cho DELTIK</h3>
+
+          <input placeholder="Họ và tên *" required />
+          <input placeholder="Email hoặc SĐT *" required />
+
+          <select required>
+            <option value="">Chủ đề *</option>
+            <option>Tư vấn mùi</option>
+            <option>Đơn hàng</option>
+            <option>Khắc tên</option>
+            <option>Quà tặng</option>
+            <option>Khác</option>
           </select>
-          <textarea placeholder="Your message" />
-          <button>Send Message</button>
-        </div>
 
-        <div className="contact-map">
-          {/* GẮN MAP CỦA BẠN Ở ĐÂY */}
-        </div>
+          <textarea
+            required
+            placeholder={`Bạn đang tìm mùi theo mood nào?
+Bạn thích hoặc không thích nốt hương nào?`}
+          />
+
+          {!sent ? (
+            <button type="submit">Gửi cho DELTIK</button>
+          ) : (
+            <div className="submit-success">
+              ✓ Gửi thành công
+              <br />
+              DELTIK sẽ phản hồi bạn trong vòng 24 giờ làm việc.
+            </div>
+          )}
+        </form>
       </section>
 
-      {/* INFO */}
-      <section className="contact-info">
-        <div>
-          <h4>BOUTIQUE</h4>
-          <p>District 1, Ho Chi Minh City</p>
-        </div>
-        <div>
-          <h4>OPENING HOURS</h4>
-          <p>Mon – Sun: 10:00 – 21:00</p>
-        </div>
-        <div>
-          <h4>CONTACT</h4>
-          <p>care@delixfragrance.com</p>
-        </div>
+      {/* ================= LINKS ================= */}
+      <section className="contact-links">
+        <button onClick={() => setActiveBox("faq")}>
+          Xem Câu hỏi thường gặp (FAQ)
+        </button>
+        <button onClick={() => setActiveBox("policy")}>
+          Chính sách giao hàng & đổi trả
+        </button>
       </section>
 
+      {/* ================= EXPECTATION ================= */}
+      <section className="contact-expectation">
+        <p>
+          Mỗi tin nhắn đều được đọc bởi đội ngũ đứng sau mùi hương —
+          <br />
+          không phải bot, không phải trả lời sẵn.
+        </p>
+      </section>
+
+      {/* ================= AI FLOAT ================= */}
+<div
+  className="ai-toggle"
+  onClick={() => setOpenAI(!openAI)}
+>
+  {openAI ? "✕" : "💬"}
+</div>
+
+{openAI && (
+  <div className="ai-float">
+    <AIChat />
+  </div>
+)};
     </div>
   );
-};
-
+}
 export default Contact;
