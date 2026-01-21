@@ -101,13 +101,68 @@ const getAIReply = (text: string): string => {
     return "Hẹn hò nên chọn mùi ấm, quyến rũ nhẹ như xạ hương hoặc vanilla.";
   }
 
-  if (msg.includes("đi tiệc")) {
-    return "Đi tiệc nên chọn mùi nổi bật và lưu hương tốt như amber hoặc gỗ ấm.";
-  }
+  if (msg.includes("tuyển dụng")) {
+  return "Chúng tôi không tuyển người làm việc. Chúng tôi tìm người để lại dấu mùi. Nếu bạn tin rằng cảm xúc quan trọng hơn tốc độ, bạn có thể thuộc về DELTIK.";
+}
 
+if (msg.includes("ứng tuyển")) {
+  return "DELTIK không tìm CV hoàn hảo. Chúng tôi muốn nghe câu chuyện của bạn, cách bạn cảm nhận thế giới và điều bạn muốn để lại.";
+}
+
+if (msg.includes("làm việc")) {
+  return "Làm việc tại DELTIK là đi chậm, quan sát kỹ và tôn trọng từng chi tiết. Mỗi người ở đây là một tầng hương, không thể thay thế.";
+}
+
+if (msg.includes("gia nhập")) {
+  return "Gia nhập DELTIK không phải để giống nhau, mà để khác đi một cách tinh tế. Nếu bạn đủ nhạy cảm để nhận ra điều đó, chúng tôi sẵn sàng lắng nghe.";
+}
+
+if (msg.includes("career") || msg.includes("công việc")) {
+  return "Con đường tại DELTIK không được định nghĩa bằng chức danh. Nó được định nghĩa bằng cảm xúc bạn tạo ra và ký ức bạn để lại.";
+}
+
+if (msg.includes("liên hệ")) {
+  return "Bạn có thể liên hệ với DELTIK bất cứ khi nào cần một lời tư vấn chân thành. Chúng tôi luôn sẵn sàng lắng nghe.";
+}
+
+if (msg.includes("contact")) {
+  return "Liên hệ với DELTIK không chỉ để hỏi thông tin, mà để bắt đầu một cuộc trò chuyện về mùi hương và cảm xúc.";
+}
+
+if (msg.includes("email")) {
+  return "Hãy gửi email cho DELTIK khi bạn cần tư vấn, hợp tác hoặc đơn giản là muốn chia sẻ một cảm xúc về mùi hương.";
+}
+
+if (msg.includes("hỗ trợ")) {
+  return "Đội ngũ DELTIK hỗ trợ bằng sự kiên nhẫn và tôn trọng. Mỗi câu hỏi đều được lắng nghe cẩn thận.";
+}
+
+if (msg.includes("tư vấn")) {
+  return "Nếu bạn chưa biết mình hợp mùi gì, hãy liên hệ DELTIK. Chúng tôi giúp bạn tìm mùi phù hợp với cảm xúc của bạn, không theo xu hướng.";
+}
+
+if (msg.includes("hợp tác")) {
+  return "DELTIK luôn mở lòng với những mối hợp tác có chiều sâu, nơi giá trị và cảm xúc được đặt lên hàng đầu.";
+}
+
+if (msg.includes("góp ý")) {
+  return "Mọi góp ý dành cho DELTIK đều đáng quý. Đó là cách chúng tôi hoàn thiện từng trải nghiệm mùi hương mỗi ngày.";
+}
+if (msg.includes("blog") && msg.includes("giao hàng")) {
+  return "Mỗi đơn hàng của DELTIK không chỉ là một sản phẩm, mà là một trải nghiệm được chuẩn bị cẩn thận từ khoảnh khắc đóng gói. Chúng tôi tin rằng cách một mùi hương đến tay bạn cũng quan trọng như chính mùi hương đó. Giao hàng được thực hiện với sự chậm rãi cần thiết để đảm bảo trọn vẹn cảm xúc. Khi mở hộp, trải nghiệm đã bắt đầu từ trước đó rất lâu.";
+}
+if (msg.includes("giao hàng")) {
+  return "Giao hàng tại DELTIK không chỉ là bước cuối cùng, mà là một phần của trải nghiệm. Mỗi đơn hàng được chuẩn bị cẩn thận, từ cách đóng gói đến hành trình vận chuyển. Chúng tôi chọn sự chậm rãi và chính xác thay vì vội vàng. Bởi mùi hương xứng đáng được đến tay bạn một cách trọn vẹn.";
+}
+
+if (msg.includes("đội ngũ")) {
+  return "Đội ngũ DELTIK được tạo nên từ những người trầm, sâu và thật. Chúng tôi tin rằng sự im lặng đúng lúc còn giá trị hơn ngàn lời nói.";
+}
   /* ===== DEFAULT ===== */
   return "Bạn có thể cho mình biết thêm về mùi hương yêu thích, dịp sử dụng hoặc khu vực bạn muốn ghé boutique không?";
 };
+
+
 
 /* ================= COMPONENT ================= */
 const AIChat = () => {

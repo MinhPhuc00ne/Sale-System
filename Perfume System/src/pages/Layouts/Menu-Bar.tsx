@@ -9,7 +9,6 @@ const MenuBar = () => {
     { label: "Brand", path: "/Brand" },
     { label: "Product details", path: "/product" },
     { label: "Recruitment", path: "/recruitment" },
-    { label: "Partner", path: "/partner" },
     { label: "BLOG", path: "/blog" },
     { label: "CONTACT", path: "/contact" },
   ];
