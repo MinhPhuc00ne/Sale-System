@@ -3,20 +3,16 @@
   justify-content: center;
   gap: 46px;
   padding: 14px 0 18px;
-  background: transparent;
 }
 
 .menu-item {
   font-size: 13px;
   letter-spacing: 3px;
-  cursor: pointer;
   color: #555;
-  opacity: 0.9;
-  transition: all 0.3s ease;
+  cursor: pointer;
+  transition: color 0.25s ease;
 }
 
 .menu-item:hover {
   color: #000;
-  opacity: 1;
-  text-decoration: underline;
 }

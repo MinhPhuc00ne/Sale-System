@@ -1,0 +1,226 @@
+/* ================= ROOT ================= */
+.product-page {
+  font-family: "Segoe UI", sans-serif;
+  background: #fafafa;
+}
+
+/* ================= BANNER ================= */
+.banner img {
+  width: 100%;
+  max-height: 380px;
+  object-fit: cover;
+  object-position: center 70%;
+}
+
+/* ================= LAYOUT ================= */
+.content {
+  display: flex;
+  padding: 30px 60px;
+  gap: 40px;
+}
+
+.sidebar {
+  width: 240px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.sidebar h3 {
+  margin: 20px 0 10px;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.sidebar input[type="range"] {
+  width: 100%;
+  margin-top: 8px;
+}
+
+/* ================= GRID ================= */
+.product-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 25px;
+}
+
+/* ================= CARD ================= */
+.product-card {
+  background: white;
+  padding: 16px;
+  border-radius: 14px;
+  text-align: center;
+  transition: 0.3s ease;
+  cursor: pointer;
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.product-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: contain;
+  margin-bottom: 10px;
+}
+
+/* ================= NAME ================= */
+.product-card h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 8px 0 4px;
+  color: #111;
+  min-height: 38px; /* giữ card đều */
+}
+
+/* ================= STAR ================= */
+.stars {
+  font-size: 13px;
+  color: #f4b400;
+  margin-bottom: 8px;
+}
+
+.stars span {
+  color: #666;
+  font-size: 12px;
+}
+
+/* ================= PRICE ================= */
+/* ================= PRICE ================= */
+.price {
+  margin-top: 12px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.price .amount {
+  font-size: 24px;      /* số to rõ */
+  color: #111;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.price .currency {
+  font-size: 23px;      /* ₫ TO HƠN */
+  font-weight: 600;
+  color: #111;
+  opacity: 0.75;
+  line-height: 1;
+}
+
+
+/* ================= ADD CART (OPTION) ================= */
+.add-cart {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: #111;
+  color: white;
+  cursor: pointer;
+}
+
+/* ================= STORY / DETAIL ================= */
+.story {
+  margin: 60px;
+  padding: 40px;
+  background: white;
+  border-radius: 16px;
+}
+
+.story h2 {
+  margin-bottom: 10px;
+}
+
+.story h3 {
+  margin-top: 25px;
+  cursor: pointer;
+  color: #222;
+}
+
+.story p {
+  margin-top: 10px;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* ================= SIZE BUTTON ================= */
+.story button {
+  margin-right: 10px;
+  margin-top: 10px;
+  padding: 6px 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background: white;
+  cursor: pointer;
+}
+
+.story button:hover {
+  border-color: #111;
+}
+
+/* ================= REVIEW ================= */
+.story .thank-you {
+  margin-top: 20px;
+  color: #c59d5f;
+  font-weight: 500;
+}
+
+/* ================= COMMITMENT ================= */
+.luxury-box {
+  margin: 60px;
+  padding: 40px;
+  background: white;
+  border-radius: 16px;
+}
+
+.luxury-box ul {
+  list-style: none;
+  padding: 0;
+}
+
+.luxury-box li {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+.ai-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 56px;
+  height: 56px;
+  background: #000;
+  color: #fff;
+  border-radius: 50%;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  transition: transform 0.2s ease;
+}
+
+.ai-toggle:hover {
+  transform: scale(1.1);
+}

@@ -5,12 +5,7 @@
   top: 0;
   z-index: 1000;
 
-  background: linear-gradient(
-    to bottom,
-    #f7f6f3,
-    #f2f1ee
-  );
-
+  background: linear-gradient(to bottom, #f7f6f3, #f2f1ee);
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
 }
 
@@ -18,37 +13,30 @@
 
 .lux-header-top {
   position: relative;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   padding: 26px 72px;
-  transition: padding 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+
+  transition: padding 0.3s ease;
 }
 
-/* ================= COMPACT ================= */
-
 .lux-header.compact .lux-header-top {
-  padding: 12px 72px;
+  padding: 14px 72px;
 }
 
 /* ================= MENU ================= */
 
 .menu-wrapper {
-  max-height: 56px;
   overflow: hidden;
-
-  transition:
-    max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1),
-    opacity 0.25s ease,
-    transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  max-height: 56px;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+  will-change: max-height, opacity;
 }
 
 .lux-header.compact .menu-wrapper {
   max-height: 0;
   opacity: 0;
-  transform: translateY(-8px);
   pointer-events: none;
 }
 
@@ -58,22 +46,21 @@
   font-size: 15px;
   letter-spacing: 4px;
   text-transform: uppercase;
-  font-weight: 500;
 }
 
-/* ================= CENTER LOGO ================= */
+/* ================= CENTER ================= */
 
 .header-logo {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+  cursor: pointer;
 }
 
 .logo-text {
   font-family: "Playfair Display", serif;
   font-size: 44px;
   letter-spacing: 8px;
-  line-height: 1;
 }
 
 .logo-i {
@@ -90,37 +77,15 @@
   gap: 14px;
 }
 
-/* ---------- TOP RIGHT ---------- */
-
-.right-top {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  font-size: 14px;
-}
-
-.coin-item {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-weight: 500;
-}
-
-/* ---------- BOTTOM RIGHT ---------- */
-
+.right-top,
 .right-bottom {
   display: flex;
   align-items: center;
   gap: 18px;
-
-  transition:
-    opacity 0.25s ease,
-    transform 0.25s ease;
 }
 
 .lux-header.compact .right-bottom {
   opacity: 0;
-  transform: translateY(-6px);
   pointer-events: none;
 }
 
@@ -130,72 +95,27 @@
   display: flex;
   align-items: center;
   gap: 10px;
-
   width: 260px;
   padding: 10px 16px;
-
   border-radius: 999px;
   border: 1px solid rgba(0, 0, 0, 0.18);
-  background: #ffffff;
+  background: #fff;
 }
 
 .search-box input {
   width: 100%;
   border: none;
   outline: none;
-  font-size: 14px;
   background: transparent;
-}
-
-/* ================= AUTH ================= */
-
-.auth-text {
-  font-size: 14px;
-  cursor: pointer;
-  white-space: nowrap;
-}
-
-.auth-text:hover {
-  text-decoration: underline;
 }
 
 /* ================= ICON ================= */
 
 .icon-item {
-  position: relative;
   cursor: pointer;
-
-  transition: transform 0.25s ease;
+  transition: transform 0.2s ease;
 }
 
 .icon-item:hover {
   transform: translateY(-2px);
-}
-
-/* ================= TOOLTIP ================= */
-
-.icon-item::after {
-  content: attr(data-tooltip);
-
-  position: absolute;
-  bottom: -36px;
-  left: 50%;
-  transform: translateX(-50%);
-
-  padding: 6px 12px;
-  font-size: 12px;
-  border-radius: 6px;
-
-  background: #111;
-  color: #fff;
-
-  white-space: nowrap;
-  opacity: 0;
-  pointer-events: none;
-
-  transition: opacity 0.2s ease;
-}
-
-.icon-item:hover::after {
-  opacity: 1;
 }

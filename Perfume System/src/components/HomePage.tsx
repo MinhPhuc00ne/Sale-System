@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../css/homepage.css";
 
 import A1 from "../assets/A1.jpg";
@@ -20,6 +21,7 @@ import AIChat from "../components/AIChat";
 
 const Homepage = () => {
   const [openAI, setOpenAI] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="lux-homepage">
@@ -28,7 +30,10 @@ const Homepage = () => {
         className="hero-section"
         style={{ backgroundImage: `url(${A1})` }}
       >
-        <button className="discover-btn">
+        <button
+          className="discover-btn"
+          onClick={() => navigate("/blog")}
+        >
           TÌM HIỂU THÊM
         </button>
       </div>
@@ -62,7 +67,10 @@ const Homepage = () => {
         className="hero-section"
         style={{ backgroundImage: `url(${A2})` }}
       >
-        <button className="discover-btn">
+        <button
+          className="discover-btn"
+          onClick={() => navigate("/blog")}
+        >
           TÌM HIỂU THÊM
         </button>
       </div>
@@ -72,7 +80,10 @@ const Homepage = () => {
         className="hero-section"
         style={{ backgroundImage: `url(${A3})` }}
       >
-        <button className="discover-btn">
+        <button
+          className="discover-btn"
+          onClick={() => navigate("/blog")}
+        >
           TÌM HIỂU THÊM
         </button>
       </div>
@@ -82,7 +93,10 @@ const Homepage = () => {
         className="hero-section"
         style={{ backgroundImage: `url(${A7})` }}
       >
-        <button className="discover-btn">
+        <button
+          className="discover-btn"
+          onClick={() => navigate("/blog")}
+        >
           TÌM HIỂU THÊM
         </button>
       </div>

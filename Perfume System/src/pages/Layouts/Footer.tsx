@@ -76,7 +76,7 @@ const Footer = () => {
             <h4>DỊCH VỤ KHÁCH HÀNG</h4>
             <p><strong>Tên doanh nghiệp:</strong> Công ty ABC</p>
             <p><strong>Hotline:</strong> 0900 000 000</p>
-            <p><strong>Email:</strong> support@email.com</p>
+            <p><strong>Email:</strong> DeltikSupport110224@email.com</p>
           </div>
         </div>
 

@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../css/header.css";
 import MenuBar from "./Menu-Bar";
@@ -11,29 +11,26 @@ import {
   Coins,
 } from "lucide-react";
 
-const SCROLL_DELTA = 8;
+const HIDE_AT = 80; // cuộn xuống bao nhiêu px thì ẩn
+const SHOW_AT = 60; // gần đầu trang thì hiện lại
 
 const Header = () => {
   const [compact, setCompact] = useState(false);
-  const lastScrollY = useRef(0);
-  const ticking = useRef(false);
   const navigate = useNavigate();
 
   useEffect(() => {
     const onScroll = () => {
-      if (ticking.current) return;
-      ticking.current = true;
+      const y = window.scrollY;
 
-      requestAnimationFrame(() => {
-        const currentY = window.scrollY;
-        const diff = currentY - lastScrollY.current;
+      // Ẩn dứt khoát
+      if (y > HIDE_AT && !compact) {
+        setCompact(true);
+      }
 
-        if (diff > SCROLL_DELTA && !compact) setCompact(true);
-        if (diff < -SCROLL_DELTA && compact) setCompact(false);
-
-        lastScrollY.current = currentY;
-        ticking.current = false;
-      });
+      // Chỉ hiện lại khi gần top
+      if (y < SHOW_AT && compact) {
+        setCompact(false);
+      }
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -53,10 +50,9 @@ const Header = () => {
         <div
           className="header-logo"
           onClick={() => navigate("/")}
-          style={{ cursor: "pointer" }}
         >
           <span className="logo-text">
-            DEL<span className="logo-i">I</span>K
+            DELTIK
           </span>
         </div>
 
@@ -64,10 +60,7 @@ const Header = () => {
         <div className="header-right">
           {/* TOP RIGHT */}
           <div className="right-top">
-            <div
-              className="icon-item"
-              data-tooltip="Kiểm tra đơn hàng"
-            >
+            <div className="icon-item" data-tooltip="Kiểm tra đơn hàng">
               <Truck size={18} />
             </div>
 
@@ -76,10 +69,7 @@ const Header = () => {
               <span>0 VNĐ</span>
             </div>
 
-            <div
-              className="icon-item"
-              data-tooltip="Sản phẩm yêu thích"
-            >
+            <div className="icon-item" data-tooltip="Yêu thích">
               <Heart size={18} />
             </div>
           </div>
@@ -88,13 +78,9 @@ const Header = () => {
           <div className="right-bottom">
             <div className="search-box">
               <Search size={18} />
-              <input
-                type="text"
-                placeholder="Tìm kiếm sản phẩm..."
-              />
+              <input placeholder="Tìm kiếm sản phẩm..." />
             </div>
 
-            {/* AUTH */}
             <div
               className="auth-text"
               onClick={() => navigate("/auth")}
@@ -102,10 +88,7 @@ const Header = () => {
               Đăng Nhập / Đăng Ký
             </div>
 
-            <div
-              className="icon-item"
-              data-tooltip="Giỏ hàng"
-            >
+            <div className="icon-item" data-tooltip="Giỏ hàng">
               <ShoppingBag size={20} />
             </div>
           </div>
