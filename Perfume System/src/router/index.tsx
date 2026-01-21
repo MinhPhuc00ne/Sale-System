@@ -5,6 +5,7 @@ import AboutUs from "../components/AboutUs";
 import Contact from "../components/Contact";
 import AuthPage from "../pages/Auth/AuthPage";
 import Brand from "../components/Brand";
+import Recruitment from "../components/Recruitment";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,6 +27,11 @@ const router = createBrowserRouter([
       {
        path: "brand",
         element: <Brand />,
+      },
+
+       {
+       path: "recruitment",
+        element: <Recruitment/>,
       },
 
     ],
