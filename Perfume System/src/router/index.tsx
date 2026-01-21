@@ -6,6 +6,7 @@ import Contact from "../components/Contact";
 import AuthPage from "../pages/Auth/AuthPage";
 import Brand from "../components/Brand";
 import Recruitment from "../components/Recruitment";
+import Blog from "../components/Blog";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,6 +33,11 @@ const router = createBrowserRouter([
        {
        path: "recruitment",
         element: <Recruitment/>,
+      },
+      
+      {
+        path: "blog",
+        element: <Blog />,
       },
 
     ],

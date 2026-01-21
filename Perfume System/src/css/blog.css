@@ -1,0 +1,101 @@
+.blog-page {
+  padding: 80px 8%;
+  background: #fafafa;
+  color: #111;
+  font-family: "Inter", sans-serif;
+}
+
+/* INTRO */
+.blog-intro {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.blog-label {
+  font-size: 12px;
+  letter-spacing: 3px;
+  color: #888;
+}
+
+.blog-intro h1 {
+  font-size: 40px;
+  margin: 20px 0;
+  font-weight: 600;
+}
+
+.blog-intro p {
+  color: #555;
+  line-height: 1.7;
+}
+
+/* BLOG LIST */
+.blog-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+}
+
+.blog-card {
+  background: #fff;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.blog-card:hover {
+  transform: translateY(-6px);
+}
+
+.blog-tag {
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: #999;
+}
+
+.blog-card h2 {
+  font-size: 22px;
+  margin: 14px 0;
+}
+
+.blog-card p {
+  font-size: 15px;
+  line-height: 1.8;
+  color: #444;
+  white-space: pre-line;
+}
+
+/* SPECIAL: QUOTE */
+.scent-quote {
+  margin: 120px 0;
+  text-align: center;
+  font-size: 26px;
+  font-style: italic;
+  color: #222;
+}
+
+.scent-quote span {
+  display: block;
+  margin-top: 12px;
+  font-size: 14px;
+  color: #777;
+}
+
+/* SPECIAL: MEMORY BOX */
+.scent-memory {
+  background: linear-gradient(135deg, #111, #333);
+  color: #fff;
+  padding: 60px;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.scent-memory h3 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.scent-memory p {
+  line-height: 1.8;
+  color: #ddd;
+}
