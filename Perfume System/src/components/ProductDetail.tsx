@@ -1,12 +1,13 @@
 import { useLocation } from "react-router-dom";
 import { useState } from "react";
 import "../css/productDetail.css";
+import { useCart } from "../context/CartContext";
 
 type ProductState = {
   id: number;
   name: string;
   image: string;
-  price: number; // VNĐ
+  price: number;
   sold: number;
   season: string;
 };
@@ -20,6 +21,7 @@ const sizes = [
 
 const ProductDetail = () => {
   const { state } = useLocation() as { state: ProductState | null };
+  const { addToCart } = useCart(); // ✅ thêm
 
   const [size, setSize] = useState(sizes[0]);
   const [quantity, setQuantity] = useState(1);
@@ -37,14 +39,25 @@ const ProductDetail = () => {
   const formatPrice = (price: number) =>
     price.toLocaleString("vi-VN");
 
+  const handleAddToCart = () => {
+    addToCart({
+      id: state.id,
+      name: state.name,
+      image: state.image,
+      price: state.price + size.extra,
+      size: size.ml,
+      quantity,
+    });
+
+    alert("✅ Sản phẩm đã được thêm vào giỏ hàng");
+  };
+
   return (
     <div className="detail-page">
-      {/* IMAGE */}
       <div className="detail-left">
         <img src={state.image} alt={state.name} />
       </div>
 
-      {/* INFO */}
       <div className="detail-right">
         <h1>{state.name}</h1>
 
@@ -52,7 +65,6 @@ const ProductDetail = () => {
           ⭐⭐⭐⭐⭐ <span>({state.sold} lượt mua)</span>
         </div>
 
-        {/* SIZE */}
         <div className="sizes">
           {sizes.map(s => (
             <button
@@ -65,7 +77,6 @@ const ProductDetail = () => {
           ))}
         </div>
 
-        {/* PRICE */}
         <div className="price">
           <span className="amount">
             {formatPrice(totalPrice)}
@@ -73,10 +84,8 @@ const ProductDetail = () => {
           <span className="currency">₫</span>
         </div>
 
-        {/* QUANTITY */}
         <div className="quantity-row">
           <span>Số lượng</span>
-
           <div className="qty-box">
             <button onClick={() => setQuantity(q => Math.max(1, q - 1))}>−</button>
             <span>{quantity}</span>
@@ -84,13 +93,13 @@ const ProductDetail = () => {
           </div>
         </div>
 
-        {/* ACTIONS */}
         <div className="action-row">
-          <button className="btn-cart">🛒 Thêm vào giỏ</button>
+          <button className="btn-cart" onClick={handleAddToCart}>
+            🛒 Thêm vào giỏ
+          </button>
           <button className="btn-buy">⚡ Mua ngay</button>
         </div>
 
-        {/* INFO */}
         <div className="spec">
           <p><b>Thương hiệu:</b> Parfums De Marly</p>
           <p><b>Nồng độ:</b> Eau De Parfum</p>

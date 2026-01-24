@@ -79,6 +79,17 @@ const getAIReply = (text: string): string => {
   if (msg.includes("nhẹ")) {
     return "Mùi nhẹ thường là citrus, trà xanh hoặc hoa trắng – phù hợp ban ngày và môi trường công sở.";
   }
+  if (msg.includes("tươi")) {
+    return "Mùi tươi như cam chanh, biển hoặc thảo mộc rất lý tưởng cho mùa hè và ban ngày.";
+  }
+
+  if (msg.includes("ấm")) {
+    return "Mùi ấm thường có hương vani, hổ phách hoặc hoa nhài – rất phù hợp cho mùa đông và buổi tối.";
+  }
+
+  if (msg.includes("Jos")) {
+    return "Xin chào Jos chúng tôi có thể giúp gì cho bạn bạn.";
+  }
 
   if (msg.includes("đậm") || msg.includes("mạnh")) {
     return "Mùi đậm thường có hương gỗ, amber hoặc da thuộc – phù hợp buổi tối hoặc đi tiệc.";
