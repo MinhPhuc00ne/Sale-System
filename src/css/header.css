@@ -1,0 +1,137 @@
+/* ================= ROOT ================= */
+
+.lux-header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: linear-gradient(to bottom, #f7f6f3, #f2f1ee);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+/* ================= TOP BAR ================= */
+
+.lux-header-top {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 26px 72px;
+
+  transition: padding 0.3s ease;
+}
+
+.lux-header.compact .lux-header-top {
+  padding: 14px 72px;
+}
+
+/* ================= MENU ================= */
+
+.menu-wrapper {
+  overflow: hidden;
+  max-height: 56px;
+  transition: max-height 0.35s ease, opacity 0.25s ease;
+  will-change: max-height, opacity;
+}
+
+.lux-header.compact .menu-wrapper {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ================= LEFT ================= */
+
+.header-slogan {
+  font-size: 15px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+/* ================= CENTER ================= */
+
+.header-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.logo-text {
+  font-family: "Playfair Display", serif;
+  font-size: 44px;
+  letter-spacing: 8px;
+}
+
+.logo-i {
+  display: inline-block;
+  transform: scaleY(1.2);
+}
+
+/* ================= RIGHT ================= */
+
+.header-right {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 14px;
+}
+
+.right-top,
+.right-bottom {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.lux-header.compact .right-bottom {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ================= SEARCH ================= */
+
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 260px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #fff;
+}
+
+.search-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+/* ================= ICON ================= */
+
+.icon-item {
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon-item:hover {
+  transform: translateY(-2px);
+}
+.cart-icon {
+  position: relative;
+}
+
+.cart-badge {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #111;
+  color: #fff;
+  font-size: 11px;
+  padding: 2px 6px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+

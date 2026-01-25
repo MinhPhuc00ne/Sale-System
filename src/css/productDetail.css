@@ -1,0 +1,252 @@
+/* =========================
+   GLOBAL
+========================= */
+body {
+  background: #f3f8fb;
+  color: #102a43;
+  font-family: "Inter", "Segoe UI", sans-serif;
+}
+
+/* =========================
+   PAGE LAYOUT
+========================= */
+.detail-page {
+  display: flex;
+  gap: 70px;
+  padding: 90px 110px;
+  background: #f3f8fb;
+}
+
+/* =========================
+   LEFT IMAGE
+========================= */
+.detail-left {
+  flex: 1;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 60px;
+  box-shadow: 0 22px 60px rgba(15, 42, 68, 0.08);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.detail-left img {
+  width: 100%;
+  max-width: 420px;
+  object-fit: contain;
+}
+
+/* =========================
+   RIGHT INFO
+========================= */
+.detail-right {
+  flex: 1.2;
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 55px 60px;
+  box-shadow: 0 22px 60px rgba(15, 42, 68, 0.08);
+}
+
+/* =========================
+   TITLE & RATING
+========================= */
+.detail-right h1 {
+  font-size: 34px;
+  font-weight: 600;
+  color: #0f2a44;
+  margin-bottom: 12px;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #f6b100;
+  font-size: 16px;
+  margin-bottom: 28px;
+}
+
+.rating span {
+  color: #5c6f82;
+  font-size: 14px;
+}
+
+/* =========================
+   SIZE SELECT
+========================= */
+.sizes {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.sizes button {
+  padding: 9px 24px;
+  border-radius: 999px;
+  border: 1.5px solid #d9e4ec;
+  background: #ffffff;
+  color: #102a43;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.sizes button:hover {
+  border-color: #2bb0e6;
+  color: #2bb0e6;
+}
+
+.sizes .active {
+  background: #2bb0e6;
+  color: #ffffff;
+  border-color: #2bb0e6;
+}
+
+/* =========================
+   PRICE
+========================= */
+/* ================= PRICE ================= */
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+
+  margin: 18px 0 22px;
+
+  font-size: 28px;        /* TO HƠN */
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+
+.price .amount {
+  font-size: 28px;        /* số là chính */
+}
+
+.price .currency {
+  font-size: 28px;        /* ₫ nhỏ hơn chút cho sang */
+  font-weight: 500;
+  opacity: 0.85;
+}
+
+
+/* =========================
+   QUANTITY
+========================= */
+.quantity-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 35px;
+}
+
+.quantity-row span {
+  font-size: 15px;
+  color: #5c6f82;
+}
+
+.qty-box {
+  display: flex;
+  align-items: center;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 2px solid #2bb0e6;
+  background: #ffffff;
+}
+
+.qty-box button {
+  width: 48px;
+  height: 48px;
+  border: none;
+  background: #2bb0e6;
+  color: #ffffff;
+  font-size: 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.qty-box button:hover {
+  background: #1996c9;
+}
+
+.qty-box span {
+  width: 56px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #102a43;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+.action-row {
+  display: flex;
+  gap: 22px;
+  margin-bottom: 45px;
+}
+
+.action-row button {
+  flex: 1;
+  padding: 16px;
+  border-radius: 999px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* ADD TO CART */
+.btn-cart {
+  background: #ffffff;
+  border: 2px solid #2bb0e6;
+  color: #2bb0e6;
+}
+
+.btn-cart:hover {
+  background: #2bb0e6;
+  color: #ffffff;
+}
+
+/* BUY NOW */
+.btn-buy {
+  border: none;
+  background: linear-gradient(135deg, #0f2a44, #2bb0e6);
+  color: #ffffff;
+  box-shadow: 0 12px 30px rgba(43, 176, 230, 0.35);
+}
+
+.btn-buy:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 40px rgba(43, 176, 230, 0.45);
+}
+
+/* =========================
+   PRODUCT SPEC
+========================= */
+.spec {
+  border-top: 1px solid #e4edf4;
+  padding-top: 25px;
+}
+
+.spec p {
+  margin: 10px 0;
+  font-size: 15px;
+  color: #5c6f82;
+}
+
+.spec b {
+  color: #102a43;
+}
+
+/* =========================
+   EMPTY STATE
+========================= */
+.empty-detail {
+  padding: 140px;
+  text-align: center;
+  font-style: italic;
+  color: #5c6f82;
+}
