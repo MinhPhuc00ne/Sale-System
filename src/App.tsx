@@ -3,13 +3,14 @@ import router from "./router";
 import "./css/global.css";
 
 import { CartProvider } from "./context/CartContext";
-import CartDrawer from "./components/CartDrawer";
+import { FavoriteProvider } from "./context/FavoriteContext";
 
 function App() {
   return (
     <CartProvider>
-      <RouterProvider router={router} />
-      <CartDrawer />
+      <FavoriteProvider>
+        <RouterProvider router={router} />
+      </FavoriteProvider>
     </CartProvider>
   );
 }

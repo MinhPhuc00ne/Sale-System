@@ -2,7 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../../css/header.css";
 import MenuBar from "./Menu-Bar";
+
 import { useCart } from "../../context/CartContext";
+import { useFavorite } from "../../context/FavoriteContext";
 
 import {
   Search,
@@ -18,7 +20,9 @@ const SHOW_AT = 60;
 const Header = () => {
   const [compact, setCompact] = useState(false);
   const navigate = useNavigate();
+
   const { totalQuantity, setOpenCart } = useCart();
+  const { totalFavorite, setOpenFavorite } = useFavorite(); // ✅ mở drawer yêu thích
 
   useEffect(() => {
     const onScroll = () => {
@@ -26,6 +30,7 @@ const Header = () => {
       if (y > HIDE_AT && !compact) setCompact(true);
       if (y < SHOW_AT && compact) setCompact(false);
     };
+
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [compact]);
@@ -39,12 +44,16 @@ const Header = () => {
         </div>
 
         {/* CENTER */}
-        <div className="header-logo" onClick={() => navigate("/")}>
+        <div
+          className="header-logo"
+          onClick={() => navigate("/")}
+        >
           <span className="logo-text">DELTIK</span>
         </div>
 
         {/* RIGHT */}
         <div className="header-right">
+          {/* TOP */}
           <div className="right-top">
             <div className="icon-item">
               <Truck size={18} />
@@ -55,11 +64,21 @@ const Header = () => {
               <span>0 VNĐ</span>
             </div>
 
-            <div className="icon-item">
+            {/* FAVORITE */}
+            <div
+              className="icon-item heart-icon"
+              onClick={() => setOpenFavorite(true)}
+            >
               <Heart size={18} />
+              {totalFavorite > 0 && (
+                <span className="heart-badge">
+                  {totalFavorite}
+                </span>
+              )}
             </div>
           </div>
 
+          {/* BOTTOM */}
           <div className="right-bottom">
             <div className="search-box">
               <Search size={18} />
@@ -89,6 +108,7 @@ const Header = () => {
         </div>
       </div>
 
+      {/* MENU */}
       <div className="menu-wrapper">
         <MenuBar />
       </div>

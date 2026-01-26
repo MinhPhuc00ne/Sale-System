@@ -11,7 +11,7 @@ import Products from "../components/Products";
 import ProductDetail from "../components/ProductDetail";
 
 import AuthPage from "../pages/Auth/AuthPage";
-
+import CartDrawer from "../components/CartDrawer";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -46,9 +46,15 @@ const router = createBrowserRouter([
         element: <Products />,
       },
       {
-        path: "product-detail", // ❗ KHÔNG có dấu /
+        path: "product-detail", 
         element: <ProductDetail />,
       },
+
+     {
+        path: "CartDrawer", 
+        element: <CartDrawer />,
+      },
+
     ],
   },
 

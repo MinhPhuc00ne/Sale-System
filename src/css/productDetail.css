@@ -1,7 +1,12 @@
 /* =========================
    GLOBAL
 ========================= */
+* {
+  box-sizing: border-box;
+}
+
 body {
+  margin: 0;
   background: #f3f8fb;
   color: #102a43;
   font-family: "Inter", "Segoe UI", sans-serif;
@@ -14,7 +19,7 @@ body {
   display: flex;
   gap: 70px;
   padding: 90px 110px;
-  background: #f3f8fb;
+  min-height: 100vh;
 }
 
 /* =========================
@@ -35,6 +40,11 @@ body {
   width: 100%;
   max-width: 420px;
   object-fit: contain;
+  transition: transform 0.35s ease;
+}
+
+.detail-left img:hover {
+  transform: scale(1.05);
 }
 
 /* =========================
@@ -56,6 +66,7 @@ body {
   font-weight: 600;
   color: #0f2a44;
   margin-bottom: 12px;
+  line-height: 1.3;
 }
 
 .rating {
@@ -79,6 +90,7 @@ body {
   display: flex;
   gap: 12px;
   margin-bottom: 30px;
+  flex-wrap: wrap;
 }
 
 .sizes button {
@@ -106,30 +118,26 @@ body {
 /* =========================
    PRICE
 ========================= */
-/* ================= PRICE ================= */
 .price {
   display: flex;
   align-items: baseline;
   gap: 6px;
-
   margin: 18px 0 22px;
-
-  font-size: 28px;        /* TO HƠN */
+  font-size: 28px;
   font-weight: 700;
   color: #111;
   letter-spacing: 0.5px;
 }
 
 .price .amount {
-  font-size: 28px;        /* số là chính */
+  font-size: 28px;
 }
 
 .price .currency {
-  font-size: 28px;        /* ₫ nhỏ hơn chút cho sang */
+  font-size: 24px;
   font-weight: 500;
   opacity: 0.85;
 }
-
 
 /* =========================
    QUANTITY
@@ -185,7 +193,7 @@ body {
 .action-row {
   display: flex;
   gap: 22px;
-  margin-bottom: 45px;
+  margin-bottom: 22px;
 }
 
 .action-row button {
@@ -224,6 +232,39 @@ body {
 }
 
 /* =========================
+   FAVORITE BUTTON
+========================= */
+.favorite-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 45px;
+}
+
+.btn-favorite {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 28px;
+  border-radius: 999px;
+  border: 2px solid #ff4d6d;
+  background: #ffffff;
+  color: #ff4d6d;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.btn-favorite:hover {
+  background: rgba(255, 77, 109, 0.08);
+}
+
+.btn-favorite.active {
+  background: #ff4d6d;
+  color: #ffffff;
+}
+
+/* =========================
    PRODUCT SPEC
 ========================= */
 .spec {
@@ -249,4 +290,33 @@ body {
   text-align: center;
   font-style: italic;
   color: #5c6f82;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .detail-page {
+    flex-direction: column;
+    padding: 60px 40px;
+  }
+
+  .detail-left,
+  .detail-right {
+    padding: 40px;
+  }
+}
+
+@media (max-width: 600px) {
+  .detail-page {
+    padding: 40px 20px;
+  }
+
+  .detail-right h1 {
+    font-size: 26px;
+  }
+
+  .action-row {
+    flex-direction: column;
+  }
 }

@@ -2,22 +2,30 @@ import { Outlet } from "react-router-dom";
 import Header from "./Header";
 import Footer from "./Footer";
 import FloatingContact from "../../components/FloatingContact";
-import { CartProvider } from "../../context/CartContext";
+import CartDrawer from "../../components/CartDrawer";
+import FavoriteDrawer from "../../components/FavoriteDrawer";
 
 const MainLayout = () => {
   return (
-    <CartProvider>
-      <div className="app-layout">
-        <Header />
-        <FloatingContact />
+    <div className="app-layout">
+      {/* HEADER */}
+      <Header />
 
-        <main className="main-content">
-          <Outlet />
-        </main>
+      {/* DRAWERS */}
+      <CartDrawer />
+      <FavoriteDrawer />
 
-        <Footer />
-      </div>
-    </CartProvider>
+      {/* FLOATING ICON */}
+      <FloatingContact />
+
+      {/* PAGE CONTENT */}
+      <main className="main-content">
+        <Outlet />
+      </main>
+
+      {/* FOOTER */}
+      <Footer />
+    </div>
   );
 };
 

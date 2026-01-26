@@ -1,7 +1,10 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Heart } from "lucide-react";
 import "../css/productDetail.css";
+
 import { useCart } from "../context/CartContext";
+import { useFavorite } from "../context/FavoriteContext";
 
 type ProductState = {
   id: number;
@@ -20,8 +23,11 @@ const sizes = [
 ];
 
 const ProductDetail = () => {
+  const navigate = useNavigate();
   const { state } = useLocation() as { state: ProductState | null };
-  const { addToCart } = useCart(); // ✅ thêm
+
+  const { addToCart } = useCart();
+  const { toggleFavorite, isFavorite } = useFavorite();
 
   const [size, setSize] = useState(sizes[0]);
   const [quantity, setQuantity] = useState(1);
@@ -29,35 +35,57 @@ const ProductDetail = () => {
   if (!state) {
     return (
       <div className="empty-detail">
-        <p>Vui lòng chọn một sản phẩm để xem chi tiết.</p>
+        <p>Vui lòng chọn sản phẩm để xem chi tiết.</p>
       </div>
     );
   }
 
-  const totalPrice = (state.price + size.extra) * quantity;
+  const favorite = isFavorite(state.id);
+
+  const unitPrice = state.price + size.extra;
+  const totalPrice = unitPrice * quantity;
 
   const formatPrice = (price: number) =>
     price.toLocaleString("vi-VN");
 
+  // 🛒 ADD TO CART
   const handleAddToCart = () => {
     addToCart({
       id: state.id,
       name: state.name,
       image: state.image,
-      price: state.price + size.extra,
+      price: unitPrice,
       size: size.ml,
       quantity,
     });
 
-    alert("✅ Sản phẩm đã được thêm vào giỏ hàng");
+    alert("✅ Đã thêm sản phẩm vào giỏ hàng");
+  };
+
+  // ❤️ FAVORITE
+  const handleFavorite = () => {
+    toggleFavorite({
+      id: state.id,
+      name: state.name,
+      image: state.image,
+      price: unitPrice, // ⭐ BẮT BUỘC
+    });
+
+    alert(
+      favorite
+        ? "💔 Đã bỏ khỏi mục yêu thích"
+        : "❤️ Đã thêm vào mục yêu thích"
+    );
   };
 
   return (
     <div className="detail-page">
+      {/* IMAGE */}
       <div className="detail-left">
         <img src={state.image} alt={state.name} />
       </div>
 
+      {/* INFO */}
       <div className="detail-right">
         <h1>{state.name}</h1>
 
@@ -65,8 +93,9 @@ const ProductDetail = () => {
           ⭐⭐⭐⭐⭐ <span>({state.sold} lượt mua)</span>
         </div>
 
+        {/* SIZE */}
         <div className="sizes">
-          {sizes.map(s => (
+          {sizes.map((s) => (
             <button
               key={s.ml}
               className={s.ml === size.ml ? "active" : ""}
@@ -77,6 +106,7 @@ const ProductDetail = () => {
           ))}
         </div>
 
+        {/* PRICE */}
         <div className="price">
           <span className="amount">
             {formatPrice(totalPrice)}
@@ -84,22 +114,57 @@ const ProductDetail = () => {
           <span className="currency">₫</span>
         </div>
 
+        {/* QUANTITY */}
         <div className="quantity-row">
           <span>Số lượng</span>
           <div className="qty-box">
-            <button onClick={() => setQuantity(q => Math.max(1, q - 1))}>−</button>
+            <button
+              onClick={() =>
+                setQuantity((q) => Math.max(1, q - 1))
+              }
+            >
+              −
+            </button>
             <span>{quantity}</span>
-            <button onClick={() => setQuantity(q => q + 1)}>+</button>
+            <button onClick={() => setQuantity((q) => q + 1)}>
+              +
+            </button>
           </div>
         </div>
 
+        {/* ACTION */}
         <div className="action-row">
           <button className="btn-cart" onClick={handleAddToCart}>
             🛒 Thêm vào giỏ
           </button>
-          <button className="btn-buy">⚡ Mua ngay</button>
+
+          <button
+            className="btn-buy"
+            onClick={() => {
+              handleAddToCart();
+              navigate("/checkout");
+            }}
+          >
+            ⚡ Mua ngay
+          </button>
         </div>
 
+        {/* FAVORITE */}
+        <div className="favorite-row">
+          <button
+            className={`btn-favorite ${favorite ? "active" : ""}`}
+            onClick={handleFavorite}
+          >
+            <Heart
+              size={18}
+              fill={favorite ? "#ff4d6d" : "none"}
+              stroke="#ff4d6d"
+            />
+            {favorite ? "Đã yêu thích" : "Thêm vào yêu thích"}
+          </button>
+        </div>
+
+        {/* SPEC */}
         <div className="spec">
           <p><b>Thương hiệu:</b> Parfums De Marly</p>
           <p><b>Nồng độ:</b> Eau De Parfum</p>
