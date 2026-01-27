@@ -146,12 +146,12 @@ const Contact = () => {
 
           <div className="info-block">
             <span>Email</span>
-            <p>support@deltik.com</p>
+            <p>DeltikSupport110224@email.com</p>
           </div>
 
           <div className="info-block">
             <span>Hotline</span>
-            <p>+84 9xx xxx xxx</p>
+            <p>+84 900 000 000</p>
           </div>
 
           <div className="info-block">

@@ -154,7 +154,7 @@ const Recruitment = () => {
           Hãy kể cho chúng tôi bạn là ai.
         </p>
         <a href="mailto:testarossa@deltik.com">
-          testarossa@deltik.com
+          testarossa@deltik@gmail.com
         </a>
       </section>
 
