@@ -9,7 +9,7 @@ import Recruitment from "../components/Recruitment";
 import Blog from "../components/Blog";
 import Products from "../components/Products";
 import ProductDetail from "../components/ProductDetail";
-
+import Checkout from "../components/Checkout";
 import AuthPage from "../pages/Auth/AuthPage";
 import CartDrawer from "../components/CartDrawer";
 const router = createBrowserRouter([
@@ -63,6 +63,12 @@ const router = createBrowserRouter([
     path: "/auth",
     element: <AuthPage />,
   },
+
+
+        {
+        path: "checkout", 
+        element: <Checkout />,
+      },
 ]);
 
 export default router;

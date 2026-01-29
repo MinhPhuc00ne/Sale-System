@@ -169,7 +169,7 @@ if (msg.includes("giao hàng")) {
 if (msg.includes("đội ngũ")) {
   return "Đội ngũ DELTIK được tạo nên từ những người trầm, sâu và thật. Chúng tôi tin rằng sự im lặng đúng lúc còn giá trị hơn ngàn lời nói.";
 }
-  /* ===== DEFAULT ===== */
+  
   return "Bạn có thể cho mình biết thêm về mùi hương yêu thích, dịp sử dụng hoặc khu vực bạn muốn ghé boutique không?";
 };
 

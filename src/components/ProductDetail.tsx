@@ -24,7 +24,9 @@ const sizes = [
 
 const ProductDetail = () => {
   const navigate = useNavigate();
-  const { state } = useLocation() as { state: ProductState | null };
+  const { state } = useLocation() as {
+    state: ProductState | null;
+  };
 
   const { addToCart } = useCart();
   const { toggleFavorite, isFavorite } = useFavorite();
@@ -41,15 +43,14 @@ const ProductDetail = () => {
   }
 
   const favorite = isFavorite(state.id);
-
   const unitPrice = state.price + size.extra;
   const totalPrice = unitPrice * quantity;
 
   const formatPrice = (price: number) =>
     price.toLocaleString("vi-VN");
 
-  // 🛒 ADD TO CART
-  const handleAddToCart = () => {
+  /* ADD TO CART - KHÔNG ALERT */
+  const addSilent = () => {
     addToCart({
       id: state.id,
       name: state.name,
@@ -58,17 +59,21 @@ const ProductDetail = () => {
       size: size.ml,
       quantity,
     });
+  };
 
+  /* ADD TO CART - CÓ ALERT */
+  const handleAddToCart = () => {
+    addSilent();
     alert("✅ Đã thêm sản phẩm vào giỏ hàng");
   };
 
-  // ❤️ FAVORITE
+  /* FAVORITE */
   const handleFavorite = () => {
     toggleFavorite({
       id: state.id,
       name: state.name,
       image: state.image,
-      price: unitPrice, // ⭐ BẮT BUỘC
+      price: unitPrice,
     });
 
     alert(
@@ -126,7 +131,9 @@ const ProductDetail = () => {
               −
             </button>
             <span>{quantity}</span>
-            <button onClick={() => setQuantity((q) => q + 1)}>
+            <button
+              onClick={() => setQuantity((q) => q + 1)}
+            >
               +
             </button>
           </div>
@@ -134,14 +141,17 @@ const ProductDetail = () => {
 
         {/* ACTION */}
         <div className="action-row">
-          <button className="btn-cart" onClick={handleAddToCart}>
+          <button
+            className="btn-cart"
+            onClick={handleAddToCart}
+          >
             🛒 Thêm vào giỏ
           </button>
 
           <button
             className="btn-buy"
             onClick={() => {
-              handleAddToCart();
+              addSilent();
               navigate("/checkout");
             }}
           >
@@ -152,7 +162,9 @@ const ProductDetail = () => {
         {/* FAVORITE */}
         <div className="favorite-row">
           <button
-            className={`btn-favorite ${favorite ? "active" : ""}`}
+            className={`btn-favorite ${
+              favorite ? "active" : ""
+            }`}
             onClick={handleFavorite}
           >
             <Heart

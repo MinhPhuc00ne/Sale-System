@@ -1,5 +1,13 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 
+/* =======================
+   TYPES
+======================= */
 export type CartItem = {
   id: number;
   name: string;
@@ -11,39 +19,59 @@ export type CartItem = {
 
 type CartContextType = {
   cart: CartItem[];
+
   addToCart: (item: CartItem) => void;
   removeItem: (id: number, size: number) => void;
+  clearCart: () => void;
+
   totalQuantity: number;
 
   openCart: boolean;
   setOpenCart: (v: boolean) => void;
 };
 
+/* =======================
+   CONTEXT
+======================= */
 const CartContext = createContext<CartContextType | null>(null);
 
-export const CartProvider = ({ children }: { children: React.ReactNode }) => {
+/* =======================
+   PROVIDER
+======================= */
+export const CartProvider = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   const [cart, setCart] = useState<CartItem[]>([]);
   const [openCart, setOpenCart] = useState(false);
 
-  /* LOAD */
+  /* LOAD CART FROM LOCALSTORAGE */
   useEffect(() => {
     const saved = localStorage.getItem("cart");
-    if (saved) setCart(JSON.parse(saved));
+    if (saved) {
+      try {
+        setCart(JSON.parse(saved));
+      } catch {
+        setCart([]);
+      }
+    }
   }, []);
 
-  /* SAVE */
+  /* SAVE CART TO LOCALSTORAGE */
   useEffect(() => {
     localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
+  /* ADD TO CART */
   const addToCart = (item: CartItem) => {
-    setCart(prev => {
+    setCart((prev) => {
       const existed = prev.find(
-        p => p.id === item.id && p.size === item.size
+        (p) => p.id === item.id && p.size === item.size
       );
 
       if (existed) {
-        return prev.map(p =>
+        return prev.map((p) =>
           p.id === item.id && p.size === item.size
             ? { ...p, quantity: p.quantity + item.quantity }
             : p
@@ -54,12 +82,22 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
     });
   };
 
+  /* REMOVE SINGLE ITEM */
   const removeItem = (id: number, size: number) => {
-    setCart(prev =>
-      prev.filter(p => !(p.id === id && p.size === size))
+    setCart((prev) =>
+      prev.filter(
+        (p) => !(p.id === id && p.size === size)
+      )
     );
   };
 
+  /* CLEAR CART (DÙNG CHO CHECKOUT) */
+  const clearCart = () => {
+    setCart([]);
+    localStorage.removeItem("cart");
+  };
+
+  /* TOTAL QUANTITY (ICON HEADER) */
   const totalQuantity = cart.reduce(
     (sum, item) => sum + item.quantity,
     0
@@ -71,6 +109,7 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
         cart,
         addToCart,
         removeItem,
+        clearCart,
         totalQuantity,
         openCart,
         setOpenCart,
@@ -81,8 +120,15 @@ export const CartProvider = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
+/* =======================
+   HOOK
+======================= */
 export const useCart = () => {
   const ctx = useContext(CartContext);
-  if (!ctx) throw new Error("useCart must be used inside CartProvider");
+  if (!ctx) {
+    throw new Error(
+      "useCart must be used inside CartProvider"
+    );
+  }
   return ctx;
 };

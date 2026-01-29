@@ -21,7 +21,7 @@ const CartDrawer = () => {
     0
   );
 
-  const handleNavigate = (path: string) => {
+  const goTo = (path: string) => {
     setOpenCart(false);
     navigate(path);
   };
@@ -58,10 +58,7 @@ const CartDrawer = () => {
                   key={`${item.id}-${item.size}`}
                   className="cart-item"
                 >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                  />
+                  <img src={item.image} alt={item.name} />
 
                   <div className="info">
                     <h4>{item.name}</h4>
@@ -97,27 +94,14 @@ const CartDrawer = () => {
             <div className="cart-actions">
               <button
                 className="btn-outline"
-                onClick={() =>
-                  handleNavigate("/products")
-                }
+                onClick={() => goTo("/products")}
               >
                 Tiếp tục mua hàng
               </button>
 
               <button
-                className="btn-outline"
-                onClick={() =>
-                  handleNavigate("/cart")
-                }
-              >
-                Xem giỏ hàng
-              </button>
-
-              <button
                 className="btn-primary"
-                onClick={() =>
-                  handleNavigate("/checkout")
-                }
+                onClick={() => goTo("/checkout")}
               >
                 Thanh toán
               </button>
