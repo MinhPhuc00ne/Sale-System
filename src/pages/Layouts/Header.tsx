@@ -5,6 +5,7 @@ import MenuBar from "./Menu-Bar";
 
 import { useCart } from "../../context/CartContext";
 import { useFavorite } from "../../context/FavoriteContext";
+import { useDelivery } from "../../context/DeliveryContext";
 
 import {
   Search,
@@ -22,7 +23,8 @@ const Header = () => {
   const navigate = useNavigate();
 
   const { totalQuantity, setOpenCart } = useCart();
-  const { totalFavorite, setOpenFavorite } = useFavorite(); // ✅ mở drawer yêu thích
+  const { totalFavorite, setOpenFavorite } = useFavorite();
+  const { activeCount } = useDelivery(); // 🚚 số đơn đang giao
 
   useEffect(() => {
     const onScroll = () => {
@@ -55,8 +57,17 @@ const Header = () => {
         <div className="header-right">
           {/* TOP */}
           <div className="right-top">
-            <div className="icon-item">
+            {/* DELIVERY */}
+            <div
+              className="icon-item"
+              onClick={() => navigate("/delivery")}
+            >
               <Truck size={18} />
+              {activeCount > 0 && (
+                <span className="cart-badge">
+                  {activeCount}
+                </span>
+              )}
             </div>
 
             <div className="coin-item">
@@ -108,7 +119,6 @@ const Header = () => {
         </div>
       </div>
 
-      {/* MENU */}
       <div className="menu-wrapper">
         <MenuBar />
       </div>

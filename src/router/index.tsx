@@ -12,6 +12,7 @@ import ProductDetail from "../components/ProductDetail";
 import Checkout from "../components/Checkout";
 import AuthPage from "../pages/Auth/AuthPage";
 import CartDrawer from "../components/CartDrawer";
+import Delivery from "../components/Delivery";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -54,6 +55,14 @@ const router = createBrowserRouter([
         path: "CartDrawer", 
         element: <CartDrawer />,
       },
+
+
+     
+     {
+        path: "delivery", 
+        element: <Delivery />,
+      },
+
 
     ],
   },

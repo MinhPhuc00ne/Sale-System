@@ -4,12 +4,15 @@ import "./css/global.css";
 
 import { CartProvider } from "./context/CartContext";
 import { FavoriteProvider } from "./context/FavoriteContext";
+import { DeliveryProvider } from "./context/DeliveryContext";
 
 function App() {
   return (
     <CartProvider>
       <FavoriteProvider>
-        <RouterProvider router={router} />
+        <DeliveryProvider>
+          <RouterProvider router={router} />
+        </DeliveryProvider>
       </FavoriteProvider>
     </CartProvider>
   );
