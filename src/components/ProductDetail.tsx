@@ -2,7 +2,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { Heart } from "lucide-react";
 import "../css/productDetail.css";
-
 import { useCart } from "../context/CartContext";
 import { useFavorite } from "../context/FavoriteContext";
 

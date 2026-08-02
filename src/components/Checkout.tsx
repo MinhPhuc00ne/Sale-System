@@ -44,8 +44,7 @@ const Checkout = () => {
     city && district ? LOCATION_DATA[city][district] : [];
 
   const total = cart.reduce(
-    (s, i) => s + i.price * i.quantity,
-    0
+    (s, i) => s + i.price * i.quantity,0
   );
 
   const canSubmit = agreePolicy && printInvoice;

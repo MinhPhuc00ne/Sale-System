@@ -85,7 +85,6 @@ const BRAND_DATA: BrandMap = {
   Z: [{ name: "Zoologist", style: "modern", featured: true }],
 };
 
-/* ================= ALPHABET ================= */
 const ALPHABET = Object.keys(BRAND_DATA);
 
 /* ================= COMPONENT ================= */
